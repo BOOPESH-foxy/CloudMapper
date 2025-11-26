@@ -7,9 +7,10 @@ def get_resources():
     pass
 
 def get_regions(region):
+
     session = ec2_session_client(region)
     result_describe_regions = session.describe_regions(AllRegions = False)
-    regions_list: dict[str, Any] = {}
+    regions_list = {}
     
     for r in result_describe_regions["Regions"]:
         regions_list.append(r["RegionName"])
@@ -17,7 +18,7 @@ def get_regions(region):
     print(regions_list)
 
 
-def resolve_regions():
+def resolve_regions(region):
 
     ap = argparse.ArgumentParser(description="AWS Cloud Mapper to Graphviz DOT")
     ap.add_argument("--region", help="Single AWS region to map, e.g., ap-south-1")

@@ -10,9 +10,11 @@ def get_regions(region):
 
     session = ec2_session_client(region)
     result_describe_regions = session.describe_regions(AllRegions = False)
-    regions_list = {}
+    regions_list = []
     
     for r in result_describe_regions["Regions"]:
         regions_list.append(r["RegionName"])
 
     print(regions_list)
+
+get_regions("ap-south-1")

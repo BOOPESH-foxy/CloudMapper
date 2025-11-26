@@ -1,0 +1,39 @@
+digraph AWS_ALL {
+  graph [fontname="Helvetica", fontsize=10, rankdir="LR"];
+  node  [fontname="Helvetica", fontsize=9, shape=box, style="rounded,filled", fillcolor="#f7f7f7"];
+  edge  [fontname="Helvetica", fontsize=8, arrowsize=0.7];
+  label="AWS Cloud Mapper (multi-region)"; labelloc=top; fontsize=12;
+  subgraph "cluster_ap-south-1" { label="Region: ap-south-1"; color="#bbbbbb"; style="rounded";
+  graph [fontname="Helvetica", fontsize=10, rankdir="LR"];
+  node  [fontname="Helvetica", fontsize=9, shape=box, style="rounded,filled", fillcolor="#f7f7f7"];
+  edge  [fontname="Helvetica", fontsize=8, arrowsize=0.7];
+  label="AWS Cloud Mapper — ap-south-1"; labelloc=top; fontsize=12;
+  subgraph "cluster_vpc-04040e2cc6f2cd56c" {
+    label="VPC: Default\n(vpc-04040e2cc6f2cd56c)\nCIDR: 172.31.0.0/16";
+    style="rounded"; color="#dcdcdc";
+    "igw-07b81e4ab0e7d8bac" [shape=diamond, label="IGW\nigw-07b81e4ab0e7d8bac", fillcolor="#e6f0ff"];
+    "subnet-04e6be0cbed36480b" [label="Subnet: subnet-04e6be0cbed36480b\nap-south-1a\n172.31.32.0/20\nMapPublicIpOnLaunch", fillcolor="#fff9e6"];
+    "rtb-062aaa745bb7ff87c" [label="RouteTable: DefaultVPCRoute\n(rtb-062aaa745bb7ff87c)\nassoc: main", fillcolor="#e9f9f1"];
+    "subnet-04e6be0cbed36480b" -> "rtb-062aaa745bb7ff87c" [label="uses RT", color="#888888"];
+    "rtb-062aaa745bb7ff87c" -> "igw-07b81e4ab0e7d8bac" [label="0.0.0.0/0", color="#4c9aff"];
+    "subnet-0d91174f2080b0922" [label="Subnet: subnet-0d91174f2080b0922\nap-south-1b\n172.31.0.0/20\nMapPublicIpOnLaunch", fillcolor="#fff9e6"];
+    "rtb-062aaa745bb7ff87c" [label="RouteTable: DefaultVPCRoute\n(rtb-062aaa745bb7ff87c)\nassoc: main", fillcolor="#e9f9f1"];
+    "subnet-0d91174f2080b0922" -> "rtb-062aaa745bb7ff87c" [label="uses RT", color="#888888"];
+    "rtb-062aaa745bb7ff87c" -> "igw-07b81e4ab0e7d8bac" [label="0.0.0.0/0", color="#4c9aff"];
+    "eni-0c8bd2ca620833d75" [label="ENI: eni-0c8bd2ca620833d75\n172.31.12.199\nSGs: sg-0aff5c469bea6079e", fillcolor="#f7f7ff"];
+    "subnet-0d91174f2080b0922" -> "eni-0c8bd2ca620833d75" [label="ENI", color="#999999"];
+    "i-05c79a15a6ff7b87f" [shape=box3d, label="EC2: foo-bar\n(i-05c79a15a6ff7b87f)\nt3.micro | running | ap-south-1b", fillcolor="#f2f9ff"];
+    "eni-0c8bd2ca620833d75" -> "i-05c79a15a6ff7b87f" [label="attached", color="#999999"];
+    "subnet-0d5fd690d7d1b4cb5" [label="Subnet: subnet-0d5fd690d7d1b4cb5\nap-south-1c\n172.31.16.0/20\nMapPublicIpOnLaunch", fillcolor="#fff9e6"];
+    "rtb-062aaa745bb7ff87c" [label="RouteTable: DefaultVPCRoute\n(rtb-062aaa745bb7ff87c)\nassoc: main", fillcolor="#e9f9f1"];
+    "subnet-0d5fd690d7d1b4cb5" -> "rtb-062aaa745bb7ff87c" [label="uses RT", color="#888888"];
+    "rtb-062aaa745bb7ff87c" -> "igw-07b81e4ab0e7d8bac" [label="0.0.0.0/0", color="#4c9aff"];
+    "pcx-01a28a433010e9ec9" [shape=component, label="Peering\npcx-01a28a433010e9ec9\ndeleted", fillcolor="#eef7ff"];
+  }
+  "sg-0aff5c469bea6079e" [shape=folder, label="SG: launch-wizard-1\nsg-0aff5c469bea6079e\nvpc-04040e2cc6f2cd56c", fillcolor="#fff0f6"];
+  "CIDR:0.0.0.0/0" [shape=oval, style="dashed", label="0.0.0.0/0"];
+  "sg-0aff5c469bea6079e" -> "CIDR:0.0.0.0/0" [label="ingress", color="#34c759", style="dashed"];
+  "sg-0922bbf43c0a16562" [shape=folder, label="SG: default\nsg-0922bbf43c0a16562\nvpc-04040e2cc6f2cd56c", fillcolor="#fff0f6"];
+  "sg-0922bbf43c0a16562" -> "sg-0922bbf43c0a16562" [label="ingress -1/-", color="#34c759"];
+  }
+}

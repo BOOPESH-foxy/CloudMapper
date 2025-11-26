@@ -16,3 +16,9 @@ def build_arg_parser():
                         default="resource_map.dot",
                         help="Name of the output dot file")
 
+    return parser
+
+
+def parse_args():
+    parser = build_arg_parser()
+    return parser.parse_args()

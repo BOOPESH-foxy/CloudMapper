@@ -63,3 +63,30 @@ elasticloadbalancing:DescribeLoadBalancers
 elasticloadbalancing:DescribeTargetGroups
 
 elasticloadbalancing:DescribeTargetHealth
+
+```
+
+
+---
+
+## Docker Usage
+
+This project includes a Dockerfile for containerized visualization rendering and serving.
+
+### Prerequisites
+- Docker installed on your system
+- A generated `graph.dot` file in the project root
+
+### Building and Running
+
+The Dockerfile uses a multi-stage build process:
+
+1. **Builder stage**: Converts the DOT file to SVG using Graphviz
+2. **Runtime stage**: Serves the SVG visualization via nginx
+
+```bash
+# Build the Docker image
+docker build -t aws-cloud-mapper .
+
+# Run the container
+docker run -p 8080:80 aws-cloud-mapper

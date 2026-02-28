@@ -10,5 +10,5 @@ RUN dot -Tsvg graph.dot -o account-map.svg
 
 FROM nginx:alpine
 
-COPY --from=builder /app/map.svg /usr/share/nginx/html/index.html
+COPY --from=builder /app/account-map.svg /usr/share/nginx/html/index.html
 EXPOSE 80

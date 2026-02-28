@@ -90,3 +90,5 @@ docker build -t aws-cloud-mapper .
 
 # Run the container
 docker run -p 8080:80 aws-cloud-mapper
+
+```

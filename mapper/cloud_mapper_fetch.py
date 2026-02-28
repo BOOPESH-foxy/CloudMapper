@@ -16,5 +16,6 @@ def get_regions(region):
         regions_list.append(r["RegionName"])
 
     print(regions_list)
+    return regions_list
 
 get_regions("ap-south-1")

@@ -19,7 +19,6 @@ class data_fetch_aws:
         self.sg: dict[str, Any] = {}
         self.enis: dict[str, Any] = {}
         self.instances: dict[str, Any] = {}
-        self.albs: dict[str, Any] = {}
         self.nlbs: dict[str, Any] = {}
         self.target_groups: dict[str, Any] = {}
 

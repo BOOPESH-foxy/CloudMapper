@@ -19,9 +19,12 @@ def determine_regions():
     return regions_list
 
 def fetch_resources(region):
+    """Fetch all AWS resources from the specified regions."""
+
     print (f"fetching map from {region}")
 
 def generate_dot_files(region_data,output_file):
+    """Generate a Graphviz DOT file from the fetched AWS resources."""
     pass
 
 if __name__ == "__main__":

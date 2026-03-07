@@ -1,20 +1,27 @@
 """Cloud mapper - visualize the network flow of resources on the configured aws profile and region"""
 
 import cli
+from cloud_mapper_fetch import get_regions
 
 def main():
     args = cli.parse_args()
-    regions = determine_regions( args )
-    region_data = fetch_resources( regions )
-    generate_dot_files( region_data,output_file )
+
+    if(args.region):
+        region_data = fetch_resources( args.region )
+    elif(args.all_regions):
+        regions_list = determine_regions()
+
+    output_file = args.out
+    # generate_dot_files( region_data, output_file )
 
 def determine_regions():
-    pass
+    regions_list = get_regions()
+    return regions_list
 
-def fetch_resources():
-    pass
+def fetch_resources(region):
+    print (f"fetching map from {region}")
 
-def generate_dot_files():
+def generate_dot_files(region_data,output_file):
     pass
 
 if __name__ == "__main__":

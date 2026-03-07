@@ -6,8 +6,12 @@ from typing import Any
 def get_resources():
     pass
 
-def get_regions(region):
-
+def get_regions(region = "us-east-1"):
+    """
+    Get a list of all enabled AWS regions for the account.
+    Note:
+        AllRegions=False means only enabled regions are returned.
+    """
     session = ec2_session_client(region)
     result_describe_regions = session.describe_regions(AllRegions = False)
     regions_list = []
@@ -17,5 +21,3 @@ def get_regions(region):
 
     print(regions_list)
     return regions_list
-
-get_regions("ap-south-1")

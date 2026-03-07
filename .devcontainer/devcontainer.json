@@ -1,8 +1,38 @@
 {
     "name": "Cloud Mapper Dev",
     "build": {
-        "dockerfile": "Dockerfile"
-        
-    }
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
     
+    // add python and AWS cli
+    "features": {
+        "ghcr.io/devcontainers/features/python:1": {
+            "version": "3.11"
+        },
+        "ghcr.io/devcontainers/features/aws-cli:1": {}
+    },
+
+    // install python extension
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python"
+            }
+        }
+    },
+
+    // mount AWS credentials
+    "mounts": [
+        "source=${localEnv:HOME}/.aws,target=/home/vscode/.aws,type=bind,consistency=cached"
+    ],
+
+    // install dependencies after container starts
+    "postCreateCommand": "pip install -r requirements.txt",
+
+    // forward port 8080 for nginx visualization
+    "forwardPorts": [8080]
 }

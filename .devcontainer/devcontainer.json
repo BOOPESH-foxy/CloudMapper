@@ -1,0 +1,8 @@
+{
+    "name": "Cloud Mapper Dev",
+    "build": {
+        "dockerfile": "Dockerfile"
+        
+    }
+    
+}

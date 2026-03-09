@@ -3,3 +3,12 @@ src/__pycache__
 __pycache__/
 describe.py
 graph.dot
+
+# CloudMapper generated visualization files
+*.svg
+*.png
+*.dot
+
+# Generated output
+account-map.svg
+resource_map.dot

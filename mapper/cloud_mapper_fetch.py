@@ -1,7 +1,10 @@
 import boto3
 import argparse
+import logging
 from boto3_resources import ec2_session_client
 from typing import Any
+
+logger = logging.getLogger(__name__)
 
 def get_resources():
     pass
@@ -18,6 +21,6 @@ def get_regions(region = "us-east-1"):
     
     for r in result_describe_regions["Regions"]:
         regions_list.append(r["RegionName"])
+    logger.warning("Getting all regions")
 
-    print(regions_list)
     return regions_list

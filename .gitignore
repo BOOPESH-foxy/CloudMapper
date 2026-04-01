@@ -12,3 +12,5 @@ graph.dot
 # Generated output
 account-map.svg
 resource_map.dot
+
+cloud-mapper.log

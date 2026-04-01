@@ -1,4 +1,6 @@
 import argparse
+import logging
+logger = logging.getLogger(__name__)
 
 def build_arg_parser():
     """
@@ -25,10 +27,11 @@ def build_arg_parser():
     parser.add_argument("--out",
                         default="resource_map.dot",
                         help="Name of the output dot file")
-
     return parser
 
 def parse_args():
     """ Parse command-line arguments provided by the user. """
     parser = build_arg_parser()
-    return parser.parse_args()
+    args = parser.parse_args()
+    logger.info(f"Parsed args: {vars(args)}")
+    return args

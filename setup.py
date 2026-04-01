@@ -5,6 +5,7 @@ setup(
     version="0.1.0",
     description="AWS Cloud Mapper - Network visualization tool",
     author="boopesh-foxy",
+    email="contact.boopesh@gmail.com",
     packages=find_packages(),
     install_requires=[
         "boto3>=1.28.0",

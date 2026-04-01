@@ -31,38 +31,7 @@ You can then render this DOT file into PNG, SVG, or PDF using Graphviz to unders
 
 ## AWS permissions
 
-This tool only uses read-only Describe/List APIs. A minimal IAM policy should include permissions like:
-
-```text
-ec2:DescribeRegions
-
-ec2:DescribeVpcs
-
-ec2:DescribeSubnets
-
-ec2:DescribeRouteTables
-
-ec2:DescribeInternetGateways
-
-ec2:DescribeNatGateways
-
-ec2:DescribeVpnGateways
-
-ec2:DescribeVpcEndpoints
-
-ec2:DescribeVpcPeeringConnections
-
-ec2:DescribeSecurityGroups
-
-ec2:DescribeNetworkInterfaces
-
-ec2:DescribeInstances
-
-elasticloadbalancing:DescribeLoadBalancers
-
-elasticloadbalancing:DescribeTargetGroups
-
-elasticloadbalancing:DescribeTargetHealth
+This tool only uses read-only Describe/List APIs.
 
 ```
 

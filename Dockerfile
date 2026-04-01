@@ -1,7 +1,7 @@
 # state 1 to install graphviz and generate svg
 FROM alpine:3.18 AS builder
 
-# install graphviz ()
+# install graphviz
 RUN apk add --no-cache graphviz
 
 WORKDIR /app

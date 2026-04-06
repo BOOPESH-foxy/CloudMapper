@@ -5,6 +5,8 @@ import os
 logging.basicConfig(filename='cloud-mapper.log',level=logging.INFO,format="%(asctime)s [%(levelname)s] - %(message)s")
 logger = logging.getLogger(__name__)
 
+LOG_DIR = os.path.expanduser("~/.cloudmapper")
+os.makedirs(LOG_DIR,exist_ok=True)
 LOG_FILE = 'cloud-mapper.log'
 LOG_MAX_BYTES = 5 * 1024 * 1024 # 5 MB
 LOG_BACKUP_COUNT = 3
